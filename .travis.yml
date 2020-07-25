@@ -1,0 +1,8 @@
+language: generic
+sudo: required
+services:
+    - docker # travis-ci installs docker copy into our running container
+before_install:
+    - docker build -t atindriyosanyal/docker-react -f Dockerfile.dev .
+script:
+    - docker run -e CI=true atindriyosanyal/docker-react npm run test
